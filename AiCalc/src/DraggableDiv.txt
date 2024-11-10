@@ -1,0 +1,52 @@
+import React, { useRef } from 'react';
+import './DraggableDiv.css';
+
+
+const DraggableDiv = ({analysisResult}) => {
+  const wrapperRef = useRef(null);
+  const isDragging = useRef(false);
+
+  // Handle mouse move events while dragging
+  const onMouseMove = (event) => {
+    if (!isDragging.current) return;
+
+    const wrapper = wrapperRef.current;
+    const movementX = event.movementX;
+    const movementY = event.movementY;
+
+    const newLeft = wrapper.offsetLeft + movementX;
+    const newTop = wrapper.offsetTop + movementY;
+
+    wrapper.style.left = `${newLeft}px`;
+    wrapper.style.top = `${newTop}px`;
+  };
+
+  // Start dragging
+  const onMouseDown = () => {
+    isDragging.current = true;
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  };
+
+  // Stop dragging and cleanup
+  const onMouseUp = () => {
+    isDragging.current = false;
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  };
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="draggable-wrapper"
+      style={{ position: 'absolute', left: '50px', top: '50px' }}
+      onMouseDown={onMouseDown}
+    >
+      <div className="draggable-content">
+        <span>{analysisResult}</span>
+      </div>
+    </div>
+  );
+};
+
+export default DraggableDiv;

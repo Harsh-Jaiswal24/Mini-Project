@@ -1,0 +1,14 @@
+.draggable-wrapper {
+  width: fit-content;
+  max-width: 200px;
+  background-color: #f1f1f1;
+  border: 2px solid #00ff37;
+  border-radius: 8px;
+  cursor: move;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.draggable-content {
+  padding: 2px;
+}
+
