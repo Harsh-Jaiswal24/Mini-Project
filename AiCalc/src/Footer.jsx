@@ -23,7 +23,7 @@ const Footer = () => {
 
     try {
       // Send the feedback to the backend
-      const response = await axios.post("http://localhost:8000/feedback", {
+      const response = await axios.post("https://notesolver-backend.onrender.com", {
         feedbackMessage: feedback,  // Send feedback message
       });
 
