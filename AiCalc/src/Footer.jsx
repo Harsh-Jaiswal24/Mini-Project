@@ -28,14 +28,14 @@ const Footer = () => {
       });
 
       // Handle the response from the backend
-      console.log("Feedback response:", response.data);
+      //console.log("Feedback response:", response.data);
       alert("Feedback submitted successfully!");
 
       // Clear the feedback input after submission
       setFeedback("");
 
     } catch (err) {
-      console.error("Error sending feedback:", err);
+      //console.error("Error sending feedback:", err);
       alert("Something went wrong. Please try again.");
     }
   };
