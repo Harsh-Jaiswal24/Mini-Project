@@ -132,7 +132,7 @@ const webService =async (event) => {
    
    //Send DataURL to Backend 
     try{
-       const response= await axios.post("https://notesolver-backend.onrender.com",{
+       const response= await axios.post('https://notesolver-backend.onrender.com/analyze',{
             dataURL 
         })
         setAnalysisResult(response.data.analysisResult);
