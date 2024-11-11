@@ -37,6 +37,26 @@ Compatible with both **Android & iOS** via a responsive web interface.
 
 ---
 
+## ⚙️💡👨🏻‍💻. **Tech Stack**
+
+**Frontend**:  
+- 🖥️ **HTML**  
+- 🎨 **CSS**  
+- ⚛️ **ReactJS**  
+- 🎨 **HTMLCanvas 2D Context** (for drawing and image processing)
+
+**Backend**:  
+- 🌐 **Node.js**  
+- 🛠️ **Express.js** (for API and server-side handling)
+
+**AI & Image Processing**:  
+- 🤖 **GeminiAPI** (for image recognition and processing)
+
+**Feedback Management**:  
+- 📧 **Mailgun.js** (for managing user feedback and notifications)
+
+---
+
 ## 📱 **How to Use**
 
 1. ✍️ **Start Drawing**  
