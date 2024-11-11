@@ -69,7 +69,7 @@ const DrawCanvas = ({onImageReady})=>{
         nativeEvent.preventDefault();
  };
  const draw=({nativeEvent})=>{
-    console.log("d")
+    //console.log("d")
     if(!isDrawing){
         return; 
     }
@@ -81,7 +81,7 @@ const DrawCanvas = ({onImageReady})=>{
     setIsColorPickerVisible(false);
  };
 const stopdrawing=()=>{
-    console.log("Nd")
+    //console.log("Nd")
     ctxRef.current.closePath();
     setisDrawing(false);
 };
@@ -128,7 +128,7 @@ const webService =async (event) => {
     if (!canvasImage) return;
 
     const dataURL = canvasImage.toDataURL('image/png');
-    console.log(dataURL);
+    //console.log(dataURL);
    
    //Send DataURL to Backend 
     try{
