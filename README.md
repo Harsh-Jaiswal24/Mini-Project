@@ -55,7 +55,8 @@ Compatible with both **Android & iOS** via a responsive web interface.
 
 ## 👨‍💻 **Author**
 
-Designed and developed by **Harsh Jaiswal**
+Designed and developed by **Harsh Jaiswal**.
+
 **Thank You!**  
 ❤️❤️  
 
