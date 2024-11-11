@@ -53,13 +53,10 @@ Compatible with both **Android & iOS** via a responsive web interface.
 
 ---
 
-## 🧑‍💻 **Author**
+## 👨‍💻 **Author**
 
-Designed and developed by **Harsh Jaiswal**.
-
----
-
-## 🙏 **Thank You!**  
+Designed and developed by **Harsh Jaiswal**
+**Thank You!**  
 ❤️❤️  
 
 
