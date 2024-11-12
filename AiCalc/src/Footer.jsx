@@ -50,7 +50,8 @@ const Footer = () => {
         <section className="mb-4">
       
         {/* LinkedIn */}
-        <a className="btn btn-outline-light btn-floating m-1" href="www.linkedin.com/in/harsh-jaiswal-93755a2a7" role="button" target='blank'>
+        <a className="btn btn-outline-light btn-floating m-1" href="www.linkedin.com/in/
+harsh-jaiswal-93755a2a7" role="button" target='blank'>
             <i className="fab fa-linkedin-in"></i>
           </a>
 
