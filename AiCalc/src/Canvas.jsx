@@ -59,8 +59,8 @@ const DrawCanvas = ({onImageReady})=>{
 },[ ]);
 
  const startdrawing= ({nativeEvent})=>{
-    
-        const {offsetX,offsetY}= nativeEvent;
+        document.body.style.overflow = 'none';  
+        const {offsetX,offsetY}= getEventPosition(nativeEvent);
         ctxRef.current.beginPath();
         ctxRef.current.moveTo(offsetX,offsetY);
         ctxRef.current.lineTo(offsetX,offsetY);
@@ -73,7 +73,7 @@ const DrawCanvas = ({onImageReady})=>{
     if(!isDrawing){
         return; 
     }
-    const {offsetX,offsetY}= nativeEvent;
+    const {offsetX,offsetY}= getEventPosition(nativeEvent);
     ctxRef.current.lineTo(offsetX,offsetY);
     ctxRef.current.stroke();
     nativeEvent.preventDefault();
@@ -84,7 +84,29 @@ const stopdrawing=()=>{
     //console.log("Nd")
     ctxRef.current.closePath();
     setisDrawing(false);
+    document.body.style.overflow = 'auto';
 };
+
+//////////////Adding GetEventPosition Function for handle both mouse and touch response.
+const getEventPosition = (nativeEvent) => {
+  if (nativeEvent.touches) {
+    // For touch events, use `clientX` and `clientY` of the first touch
+    const touch = nativeEvent.touches[0];
+    const { left, top } = nativeEvent.target.getBoundingClientRect();
+    return {
+      offsetX: touch.clientX - left,
+      offsetY: touch.clientY - top,
+    };
+  } else {
+    // For mouse events, use `offsetX` and `offsetY`
+    return {
+      offsetX: nativeEvent.offsetX,
+      offsetY: nativeEvent.offsetY,
+    };
+  }
+};
+/////////////////////////////////////////////
+
 const setToDraw=()=>{
     ctxRef.current.globalCompositeOperation= 'source-over';  //uper draw ke liye 
 }
@@ -210,6 +232,12 @@ return (
                   onMouseUp={stopdrawing} 
                   onMouseMove={draw} 
                   onMouseLeave={stopdrawing} 
+
+                   //For Mobile Functionality
+                  onTouchStart={startdrawing}
+                  onTouchMove={draw}
+                  onTouchEnd={stopdrawing}
+                  ///////
                   className="border border-3 border-primary rounded-lg shadow-lg"
                 />
             </div>
