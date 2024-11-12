@@ -1,4 +1,6 @@
 .draggable-wrapper {
+  touch-action: none;
+  font-weight: 700;
   width: fit-content;
   max-width: 200px;
   background-color: #f1f1f1;
