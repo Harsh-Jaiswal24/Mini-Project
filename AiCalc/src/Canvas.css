@@ -3,6 +3,7 @@
 #canvas {
     border: 2px solid rgb(0, 0, 0) !important;
     border-radius: 0.5px ;
+    touch-action: none;
   }
   
   /* Canvas navbar responsive and hover effect */
