@@ -22,8 +22,8 @@ app.post('/feedback', (req, res) => {
     const { feedbackMessage } = req.body;
     console.log('Received feedback:', feedbackMessage);
    
-             mg.messages.create('sandbox134d557854544569b63a7ad43f14f94b.mailgun.org', {
-                 from:  'Excited User <mailgun@sandbox134d557854544569b63a7ad43f14f94b.mailgun.org>',
+             mg.messages.create('sandboxafead3e9064c4182b351b0cd913de954.mailgun.org', {
+                 from:  'Excited User <mailgun@sandboxafead3e9064c4182b351b0cd913de954.mailgun.org>',
                  to: ["harsh4jaiswal@gmail.com"],
                  subject: "Feedback From NoteSolver User",
                  text: feedbackMessage,
