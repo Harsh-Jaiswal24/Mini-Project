@@ -38,7 +38,6 @@ app.post('/feedback', (req, res) => {
 
 
 //Gemini Image Processing
-// Gemini API Key (ensure this is securely stored)
 const API_KEY = process.env.GEMINI_API_KEY;
 
 // Route to upload image and send it for analysis
