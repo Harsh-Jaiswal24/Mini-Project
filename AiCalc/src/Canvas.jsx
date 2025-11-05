@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import { Navbar, Nav, Container } from 'react-bootstrap'; // Import Navbar components
 import DraggableDiv from './DraggableDiv';
 
+// Use environment variable for backend URL, fallback to production
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://notesolver-backend.onrender.com';
 
 const DrawCanvas = ({onImageReady})=>{
     const canvasRef= useRef(null);
@@ -154,7 +156,7 @@ const webService =async (event) => {
    
    //Send DataURL to Backend 
     try{
-       const response= await axios.post('https://notesolver-backend.onrender.com/analyze',{
+       const response= await axios.post(`${BACKEND_URL}/analyze`,{
             dataURL 
         })
         setAnalysisResult(response.data.analysisResult);

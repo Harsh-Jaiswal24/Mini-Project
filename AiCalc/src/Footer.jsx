@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useState} from 'react';
 
+// Use environment variable for backend URL, fallback to production
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://notesolver-backend.onrender.com';
  
 const Footer = () => {
   const [feedback, setFeedback] = useState("");
@@ -23,7 +25,7 @@ const Footer = () => {
 
     try {
       // Send the feedback to the backend
-      const response = await axios.post("https://notesolver-backend.onrender.com/feedback", {
+      const response = await axios.post(`${BACKEND_URL}/feedback`, {
         feedbackMessage: feedback,  // Send feedback message
       });
 
