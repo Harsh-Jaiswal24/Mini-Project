@@ -64,7 +64,7 @@ async function analyzeWithGemini(imageBase64) {
     try {
         const genAI = new GoogleGenerativeAI(API_KEY);
         const model = genAI.getGenerativeModel({
-            model: "gemini-1.5-flash", // or gemini-1.5-pro
+            model: "gemini-2.5-flash", // or gemini-1.5-pro
             safetySettings: [
                 {
                     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
