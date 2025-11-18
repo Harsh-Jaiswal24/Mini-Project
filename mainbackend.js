@@ -11,7 +11,15 @@ const formData = require('form-data');
 const Mailgun = require('mailgun.js');
 const mailgun = new Mailgun(formData);
 const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY;
-const mg = mailgun.client({username: 'api', key: MAILGUN_API_KEY });
+let mg = null;
+
+// Only initialize Mailgun if API key is provided
+if (MAILGUN_API_KEY) {
+    mg = mailgun.client({username: 'api', key: MAILGUN_API_KEY });
+    console.log('Mailgun initialized successfully');
+} else {
+    console.warn('Warning: MAILGUN_API_KEY not found. Feedback feature will be disabled.');
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,18 +30,24 @@ app.post('/feedback', (req, res) => {
     const { feedbackMessage } = req.body;
     console.log('Received feedback:', feedbackMessage);
    
-             mg.messages.create('sandboxafead3e9064c4182b351b0cd913de954.mailgun.org', {
-                 from:  'Excited User <mailgun@sandboxafead3e9064c4182b351b0cd913de954.mailgun.org>',
-                 to: ["harsh4jaiswal@gmail.com"],
-                 subject: "Feedback From NoteSolver User",
-                 text: feedbackMessage,
-                //  html: `<p>${feedbackMessage}</p>`
-               })
-               .then(msg => console.log(msg)) // logs response data
-               .catch(err => console.error(err)); // logs any error
-                 // Respond with a success message
-                 res.json({ message: "Feedback received successfully!" });
-               });
+    // Check if Mailgun is initialized
+    if (!mg) {
+        console.log('Mailgun not configured, feedback logged to console only');
+        return res.json({ message: "Feedback received and logged (email not configured)" });
+    }
+
+    mg.messages.create('sandboxafead3e9064c4182b351b0cd913de954.mailgun.org', {
+        from:  'Excited User <mailgun@sandboxafead3e9064c4182b351b0cd913de954.mailgun.org>',
+        to: ["harsh4jaiswal@gmail.com"],
+        subject: "Feedback From NoteSolver User",
+        text: feedbackMessage,
+        //  html: `<p>${feedbackMessage}</p>`
+    })
+    .then(msg => console.log(msg)) // logs response data
+    .catch(err => console.error(err)); // logs any error
+    // Respond with a success message
+    res.json({ message: "Feedback received successfully!" });
+});
 //Feedback
 
 
